@@ -1,5 +1,4 @@
 import numpy as np
-from music_data import note_freq
 
 def apply_envelope(signal, Fs, attack=0.005, decay=0.1):
     length = len(signal)
