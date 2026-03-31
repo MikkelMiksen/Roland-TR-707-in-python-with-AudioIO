@@ -1,30 +1,30 @@
-import audioio as AudioIO
+import sounddevice as sd
 import numpy as np
 import SoundUtils
 
 def kick(beats):
-    return ("kick", beats)
+    return "kick",beats
 
 def snare(beats):
-    return ("snare", beats)
+    return "snare",beats
 
 def ch(beats):
-    return ("ch", beats)
+    return "ch",beats
 
 def oh(beats):
-    return ("oh", beats)
+    return "oh",beats
 
 
-def build_beat(events, Fs, seconds_per_beat):
+def build_beat(events, build_Fs, build_seconds_per_beat):
     total_beats = sum(beats for _, beats in events)
-    total_samples = int(total_beats * seconds_per_beat * Fs)
+    total_samples = int(total_beats * build_seconds_per_beat * build_Fs)
 
-    output = np.zeros(total_samples)
+    build_output = np.zeros(total_samples, dtype=np.float32)
     cursor = 0
 
     for drum, beats in events:
-        duration = beats * seconds_per_beat
-        samples = int(duration * Fs)
+        duration = beats * build_seconds_per_beat
+        samples = int(duration * build_Fs)
 
         if drum == "kick":
             y = SoundUtils.kick(Fs, duration)
@@ -37,10 +37,10 @@ def build_beat(events, Fs, seconds_per_beat):
         else:
             y = np.zeros(samples)
 
-        output[cursor:cursor+samples] += y[:samples]
+        build_output[cursor:cursor+samples] += y[:samples]
         cursor += samples
 
-    return output
+    return build_output
 
 beat = [
     kick(0.25), ch(0.25), ch(0.25), ch(0.25),
@@ -92,6 +92,13 @@ output = build_beat(beat, Fs, seconds_per_beat)
 output /= np.max(np.abs(output))
 output = output.reshape(-1,1)
 
-AudioIO.play(output, Fs)
+print(type(output))
+print(output.dtype)
+print(output.shape)
+print(np.max(output), np.min(output))
+
+# print("Just trust me bro! I did what you asked sound is here!!")
+sd.play(output, 44100)
+sd.wait()
 
 
