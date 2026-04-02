@@ -1,1 +1,1 @@
-# Recreation of the ROLAND TR-707 drum kit in python using AudioIO #
+# Recreation of the ROLAND TR-707 drum kit in python using SpundDevice and Numpy #
