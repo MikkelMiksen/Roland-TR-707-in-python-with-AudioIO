@@ -100,5 +100,3 @@ print(np.max(output), np.min(output))
 # print("Just trust me bro! I did what you asked sound is here!!")
 sd.play(output, 44100)
 sd.wait()
-
-
