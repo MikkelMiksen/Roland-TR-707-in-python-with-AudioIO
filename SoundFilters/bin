@@ -1,0 +1,44 @@
+print('running')
+
+    if win32api.GetAsyncKeyState(ord('A')) & 0x8000:
+        print('A is pressed')
+
+    if win32api.GetAsyncKeyState(ord('W')) & 0x8000:
+        print('W is pressed')
+
+    if win32api.GetAsyncKeyState(ord('S')) & 0x8000:
+        print('S is pressed')
+
+    if win32api.GetAsyncKeyState(ord('E')) & 0x8000:
+        print('E is pressed')
+
+    if win32api.GetAsyncKeyState(ord('D')) & 0x8000:
+        print('D is pressed')
+
+    if win32api.GetAsyncKeyState(ord('F')) & 0x8000:
+        print('F is pressed')
+
+    if win32api.GetAsyncKeyState(ord('T')) & 0x8000:
+        print('T is pressed')
+
+    if win32api.GetAsyncKeyState(ord('G')) & 0x8000:
+        print('G is pressed')
+
+    if win32api.GetAsyncKeyState(ord('Y')) & 0x8000:
+        print('Y is pressed')
+
+    if win32api.GetAsyncKeyState(ord('H')) & 0x8000:
+        print('H is pressed')
+
+    if win32api.GetAsyncKeyState(ord('U')) & 0x8000:
+        print('U is pressed')
+
+    if win32api.GetAsyncKeyState(ord('J')) & 0x8000:
+        print('J is pressed')
+
+    if win32api.GetAsyncKeyState(ord('K')) & 0x8000:
+        print('K is pressed')
+
+    programThread = threading.Thread()
+    programThread.start()
+    if win32api.GetAsyncKeyState(0x1B):
